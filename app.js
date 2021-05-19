@@ -26,6 +26,7 @@ require('./socket/res_to_db')(io)
 app.use('/', require('./auth/login'))
 app.use('/user', require('./routes/users'))
 app.use('/admin', require('./routes/admin'))
+app.use('/delete', require('./routes/delete'))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'api.html'));
