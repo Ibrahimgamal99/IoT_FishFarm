@@ -4,7 +4,7 @@ const e = require('cors');
 const connection = require('../model/database')
 const { end } = require('../model/database');
 
-router.post("/admin", bodyParser.json(), function (req, res) {
+router.post("/admins", bodyParser.json(), function (req, res) {
     console.log(req.body)
     ac = req.body.admin_code;
     connection.query("SELECT * FROM `admin` WHERE `admin_code`=?", ac, function (err, result) {
@@ -28,7 +28,7 @@ router.post("/admin", bodyParser.json(), function (req, res) {
     })
 })
 
-router.post("/farm", bodyParser.json(), function (req, res) {
+router.post("/farms", bodyParser.json(), function (req, res) {
 
     console.log(req.body)
     farm_name = req.body.Farm_name;
@@ -55,7 +55,7 @@ router.post("/farm", bodyParser.json(), function (req, res) {
 
     
 })
-router.post("/user", bodyParser.json(), function (req, res) {
+router.post("/users", bodyParser.json(), function (req, res) {
 
     console.log(req.body)
     uc = req.body.User_code;
