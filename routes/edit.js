@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const connection = require('../model/database')
 router.post("/admins", bodyParser.json(), function (req, res) {
     console.log(req.body)
-    var admin = req.body.admincode
+    var admin = req.body.admin_code
     var name = req.body.name
     var email = req.body.email
     var phone = req.body.phone
@@ -19,7 +19,7 @@ router.post("/admins", bodyParser.json(), function (req, res) {
 
 });
 router.post("/users", bodyParser.json(), function (req, res) {
-    var user = req.body.usercode
+    var user = req.body.User_code
     var name = req.body.name
     var email = req.body.email
     var phone = req.body.phone
