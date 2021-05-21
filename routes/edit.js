@@ -8,7 +8,6 @@ router.post("/admins", bodyParser.json(), function (req, res) {
     var name = req.body.name
     var email = req.body.email
     var phone = req.body.phone
-//UPDATE `admin` SET `Name`='ibrahim',`Email`='fdd@gmail.com',`phone`='76454' WHERE `admin_code`='heem';
     var sql = "UPDATE `admin` SET `Name`='" + name + "',`Email`='" + email + "',`phone`='" + phone + "' WHERE `admin_code`='" + admin + "';"
     connection.query(sql, function (err, result) {
         if (err) throw err
@@ -19,7 +18,23 @@ router.post("/admins", bodyParser.json(), function (req, res) {
     })
 
 });
+router.post("/users", bodyParser.json(), function (req, res) {
+    var user = req.body.usercode
+    var name = req.body.name
+    var email = req.body.email
+    var phone = req.body.phone
+    var addr = req.body.address
+    console.log(req.body)
+    var sql = "UPDATE `user` SET `Name`='" + name + "',`Email`='" + email + "',`phone`='" + phone + "',`address`='" + addr + "' WHERE `User_code`='" + user + "';"
+    connection.query(sql, function (err, result) {
+        if (err) throw err
+        console.log("user updated");
+        res.status(200).json({
+            record: "user updated"
+        })
+    })
 
+});
 
 
 module.exports = router;
