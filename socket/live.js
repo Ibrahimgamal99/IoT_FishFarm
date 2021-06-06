@@ -1,4 +1,5 @@
-const connection = require('../model/database')
+const connection = require('../model/database') // connect to db
+// open socket 
 module.exports = (io) => {
     io.on('connection', (socket) => {
         socket.on('roomcode', (user_code, farmname) => {
@@ -6,6 +7,7 @@ module.exports = (io) => {
             console.log(user_code + farmname)
 
         });
+        // send save time to raspby (fish farm)
         socket.on('timer', (user_code, farmname, timer) => {
             console.log(user_code + farmname, timer)
             io.in(user_code + farmname).emit('timer', timer)
@@ -15,6 +17,7 @@ module.exports = (io) => {
                 console.log("timer updated");
             })
         });
+        // send user code & farmname & tempc & ph to raspby
         socket.on('live', (User_code, farmname, tempc, ph) => {
             tempc = tempc.toFixed(2);
             ph = ph.toFixed(2)
@@ -22,6 +25,7 @@ module.exports = (io) => {
             console.log(User_code, farmname, tempc, ph)
 
         });
+        // send frame (camera steam) to raspby
         socket.on('camera', (User_code, farmname, image) => {
             io.in(User_code + farmname).emit('image', image)
 

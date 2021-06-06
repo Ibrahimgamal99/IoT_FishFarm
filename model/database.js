@@ -13,10 +13,3 @@ connection.connect(function (err) {//check connection to database
     console.log('connected to mysql host')
 })
 module.exports = connection;
-
-// var connection = mysql.createConnection({
-//     host: 'sql4.freemysqlhosting.net',
-//     user: 'sql4413446',
-//     password: 'EbySIKnyB3',
-//     database: 'sql4413446'
-// });

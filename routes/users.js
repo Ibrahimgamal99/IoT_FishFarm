@@ -16,7 +16,6 @@ router.get("/live", bodyParser.json(), function (req, res) {
 })
 router.post("/reports", bodyParser.json(), function (req, res) {
     console.log(req.body)
-    // id = req.body.User_code;
     fname = req.body.Farm_name;
     sdate = req.body.Start_Date;
     edate = req.body.End_Date;

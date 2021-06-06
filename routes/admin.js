@@ -13,7 +13,7 @@ router.post("/signupuser", bodyParser.json(), function (req, res) {
     var phone = req.body.phone
     var addr = req.body.address
     let pw = bcrypt.hashSync(password, 10);
-    if (user) {// user is exit
+    if (user) {// user is exist
         connection.query("SELECT * FROM `user` WHERE `User_code`=?", user, function (err, result) {
             if (result.length > 0) {
                 console.log("user is exit");
@@ -22,7 +22,7 @@ router.post("/signupuser", bodyParser.json(), function (req, res) {
                 })
                 if (err) throw err;
             }
-            else {
+            else {// create new user 
                 var sql = "INSERT INTO `user`(`User_code`, `Name`, `password`, `Email`, `phone`, `address`, `save_time`) VALUES ('" + user + "','" + name + "','" + pw + "','" + email + "','" + phone + "','" + addr + "','" + 30 + "');"
                 connection.query(sql, function (err, result) {
                     if (err) throw err
@@ -46,7 +46,7 @@ router.post("/signupadmin", bodyParser.json(), function (req, res) {
     var email = req.body.email
     var phone = req.body.phone
     let pw = bcrypt.hashSync(password, 10);
-    if (admin) {// admin is exit
+    if (admin) {// admin is exist
         connection.query("SELECT * FROM `admin` WHERE `admin_code`=?", admin, function (err, result) {
             if (result.length > 0) {
                 console.log("admin is exit");
@@ -56,6 +56,7 @@ router.post("/signupadmin", bodyParser.json(), function (req, res) {
                 if (err) throw err;
             }
             else {
+                // create new user 
                 var sql = "INSERT INTO `admin`(`admin_code`, `Name`, `password`, `Email`, `phone`) VALUES ('" + admin + "','" + name + "','" + pw + "','" + email + "','" + phone + "');"
                 connection.query(sql, function (err, result) {
                     if (err) throw err
@@ -75,9 +76,8 @@ router.post("/newfarm", bodyParser.json(), function (req, res) {
     var user = req.body.usercode
     var fname = req.body.Farm_name
     connection.query("SELECT * FROM `user` WHERE `User_code`=?", user, function (err, result) {
-        if (result.length > 0) {
+        if (result.length > 0) { // check if farm is exist 
             console.log("user is Exist");
-            //var sql = "SELECT * FROM `Farm` WHERE and`Farm_name`='" + fname + "';";
             connection.query("SELECT * FROM `Farm` WHERE `Farm_name`=?",fname, function (err, result) {
                 if (result.length > 0) {
                     console.log("Farm name is Exist");
@@ -86,6 +86,7 @@ router.post("/newfarm", bodyParser.json(), function (req, res) {
                     })
                 }
                 else {
+                    // create new fish farm  
                     var sql = "INSERT INTO `Farm` (`User`, `Farm_name`) VALUES ('" + user + "','" + fname + "');";
                     connection.query(sql, function (err, result) {
                         if (err) throw err
