@@ -1,0 +1,107 @@
+<html<head>
+    <meta charset="utf-8" />
+    <title>IOTFishFarm</title>
+    </head>
+
+    <body>
+        <h1>API</h1>
+        <p>
+        <p>create new user (post)</p>
+        <p> https://iotfishfarm.herokuapp.com/admin/signupuser</p>
+        {
+        "usercode": "hema",
+        "name": "ibrahim gamal",
+        "password": "hema123",
+        "email": "hema@gmail.com",
+        "phone": "01140046682",
+        "address": "cairo",
+        }
+        <p>*****************************</p>
+        <p>create new admin (post)</p>
+        <p> https://iotfishfarm.herokuapp.com/admin/signupadmin</p>
+        {
+        "admincode": "islam",
+        "name": "islam",
+        "password": "islam123",
+        "email": "solm@gmail.com",
+        "phone": "011115445"
+        }
+        <p>*****************************</p>
+        <p>create new Farm number (id) (post)</p>
+        <p>https://iotfishfarm.herokuapp.com/admin/newfarm</p>
+        {
+        "usercode":"",
+        "Farm_name":""
+        }
+        <p>*****************************</p>
+        <p>Login</p>
+        <p>https://iotfishfarm.herokuapp.com/login</p>
+        <p>{
+            "type": 1,
+            "code": "hema",
+            "password": "hema123"
+            } مستخدم
+        </p>
+        {
+        "type": 0,
+        "code": "islam",
+        "password": "islam123"
+        } مسئول
+        <p>*****************************</p>
+        <p>reports(post)</p>
+        <p>https://iotfishfarm.herokuapp.com/user/reports</p>
+        {
+        "User_code": "hema",
+        "Farm_name":"f1",
+        "Start_Date": "2021-01-31",
+        "End_Date": "2021-01-31"
+        }
+        <p>*****************************</p>
+        <p>delete User(post)</p>
+        <p>https://iotfishfarm.herokuapp.com/delete/users</p>
+        {
+        "User_code": ""
+        }
+        <p>*****************************</p>
+        <p>delete admin(post)</p>
+        <p>https://iotfishfarm.herokuapp.com/delete/admins</p>
+        {
+        "admin_code": ""
+        }
+        <p>*****************************</p>
+        <p>delete farm(post)</p>
+        <p>https://iotfishfarm.herokuapp.com/delete/farms</p>
+        {
+        "Farm_name": ""
+        }
+        <p>*****************************</p>
+        <p>get all users (get)</p>
+        <p>https://iotfishfarm.herokuapp.com/get/users</p>
+        <p>*****************************</p>
+        <p>get all admins (get)</p>
+        <p>https://iotfishfarm.herokuapp.com/get/admins</p>
+        <p>*****************************</p>
+        <p>edit users (post)</p>
+        <p>https://iotfishfarm.herokuapp.com/get/edit/users</p>
+        <p>*****************************</p>
+        <p>edit admis (post)</p>
+        <p>https://iotfishfarm.herokuapp.com/get/edit/admins</p>
+        <p>*****************************</p>
+        <p>Web socket link</p>
+        <p>ws://iotfishfarm.herokuapp.com</p>
+        var socket = io('ws://localhost:3001');
+        <p>*****************************</p>
+        <p>web socket هنحط الحاجة دي في الانجلير علشان يستلم</p>
+        <p> socket.emit('roomcode', User_code, Farm_name);// </p>
+        <p>socket.on('data', (Farm_name, tempc, ph) => { });</p>
+        <p>socket.on('image', image => {</p>
+        <p>imageel = document.getElementById('image')</p>
+        <p>imageel.src = image; });</p>
+        <p>*****************************</p>
+        <p>setting</p>
+        <p>socket.emit('timer', User_code,Farm_name, time);</p>
+        <p>*****************************</p>
+
+    </body>
+
+    </html>

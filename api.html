@@ -1,107 +1,175 @@
-<html<head>
-    <meta charset="utf-8" />
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- <style></style> -->
     <title>IOTFishFarm</title>
     </head>
-
     <body>
-        <h1>API</h1>
-        <p>
-        <p>create new user (post)</p>
-        <p> https://iotfishfarm.herokuapp.com/admin/signupuser</p>
-        {
-        "usercode": "hema",
-        "name": "ibrahim gamal",
-        "password": "hema123",
-        "email": "hema@gmail.com",
-        "phone": "01140046682",
-        "address": "cairo",
-        }
-        <p>*****************************</p>
-        <p>create new admin (post)</p>
-        <p> https://iotfishfarm.herokuapp.com/admin/signupadmin</p>
-        {
-        "admincode": "islam",
-        "name": "islam",
-        "password": "islam123",
-        "email": "solm@gmail.com",
-        "phone": "011115445"
-        }
-        <p>*****************************</p>
-        <p>create new Farm number (id) (post)</p>
-        <p>https://iotfishfarm.herokuapp.com/admin/newfarm</p>
-        {
-        "usercode":"",
-        "Farm_name":""
-        }
-        <p>*****************************</p>
-        <p>Login</p>
-        <p>https://iotfishfarm.herokuapp.com/login</p>
-        <p>{
-            "type": 1,
-            "code": "hema",
-            "password": "hema123"
-            } مستخدم
-        </p>
-        {
-        "type": 0,
-        "code": "islam",
-        "password": "islam123"
-        } مسئول
-        <p>*****************************</p>
-        <p>reports(post)</p>
-        <p>https://iotfishfarm.herokuapp.com/user/reports</p>
-        {
-        "User_code": "hema",
-        "Farm_name":"f1",
-        "Start_Date": "2021-01-31",
-        "End_Date": "2021-01-31"
-        }
-        <p>*****************************</p>
-        <p>delete User(post)</p>
-        <p>https://iotfishfarm.herokuapp.com/delete/users</p>
-        {
-        "User_code": ""
-        }
-        <p>*****************************</p>
-        <p>delete admin(post)</p>
-        <p>https://iotfishfarm.herokuapp.com/delete/admins</p>
-        {
-        "admin_code": ""
-        }
-        <p>*****************************</p>
-        <p>delete farm(post)</p>
-        <p>https://iotfishfarm.herokuapp.com/delete/farms</p>
-        {
-        "Farm_name": ""
-        }
-        <p>*****************************</p>
-        <p>get all users (get)</p>
-        <p>https://iotfishfarm.herokuapp.com/get/users</p>
-        <p>*****************************</p>
-        <p>get all admins (get)</p>
-        <p>https://iotfishfarm.herokuapp.com/get/admins</p>
-        <p>*****************************</p>
-        <p>edit users (post)</p>
-        <p>https://iotfishfarm.herokuapp.com/get/edit/users</p>
-        <p>*****************************</p>
-        <p>edit admis (post)</p>
-        <p>https://iotfishfarm.herokuapp.com/get/edit/admins</p>
-        <p>*****************************</p>
-        <p>Web socket link</p>
-        <p>ws://iotfishfarm.herokuapp.com</p>
-        var socket = io('ws://localhost:3001');
-        <p>*****************************</p>
-        <p>web socket هنحط الحاجة دي في الانجلير علشان يستلم</p>
-        <p> socket.emit('roomcode', User_code, Farm_name);// </p>
-        <p>socket.on('data', (Farm_name, tempc, ph) => { });</p>
-        <p>socket.on('image', image => {</p>
-        <p>imageel = document.getElementById('image')</p>
-        <p>imageel.src = image; });</p>
-        <p>*****************************</p>
-        <p>setting</p>
-        <p>socket.emit('timer', User_code,Farm_name, time);</p>
-        <p>*****************************</p>
+    <div class="d-1">
+        <table border="1"> 
+            <caption style="font-size: 50px;">API</caption>
+            <tbody><tr>
+                <th>Method</th>
+                <th>Link</th>
+                <th>Json-Code</th>
+            </tr>
+            <tr>
+                <td>create new user (post)</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/admin/signupuser</u>&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"usercode":"hema",</td></tr>
+                        <tr><td>"name":"Ibrahim Gamal",</td></tr>
+                        <tr><td>"password":"hema123",</td></tr>
+                        <tr><td>"email":"<u style="color: blue;">hema@gmail.com</u>",</td></tr>
+                        <tr><td>"phone":"01140046682",</td></tr>
+                        <tr><td> "address":"cairo",</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>create new admin (post)</td>
+                <td><p style="color: blue;"><u> https://iotfishfarm.herokuapp.com/admin/signupadmin</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td> "admincode": "islam",</td></tr>
+                        <tr><td> "name": "islam",</td></tr>
+                        <tr><td>"password":"islam123",</td></tr>
+                        <tr><td>"email":"<u style="color: blue;">solm@gmail.com</u>",</td></tr>
+                        <tr><td>"phone":"011115445",</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>create new Farm number (id) (post)</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/admin/newfarm</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"usercode":"&nbsp;",</td></tr>
+                        <tr><td>"Farm_name":"&nbsp;"</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>Login</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/login</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"type":'1',</td></tr>
+                        <tr><td>"code":"hema",</td></tr>
+                        <tr><td>"password":"hema123"</td></tr>
+                        <tr><td>}(مستخدم)</td></tr>
+                        <tr><td>{</td></tr>
+                        <tr><td>"type":'0',</td></tr>
+                        <tr><td>"code":"islam",</td></tr>
+                        <tr><td>"password":"islam123"</td></tr>
+                        <tr><td>}(مسئول)</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>reports(post)</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/user/reports</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"User_code":"hema",</td></tr>
+                        <tr><td>"Farm_name":"f1",</td></tr>
+                        <tr><td>"Start_Date":"2021-01-31",</td></tr>
+                        <tr><td>"End_Date":"2021-01-31"</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>delete User(post)</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/delete/users</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"User-code":"&nbsp;"</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>delete admin(post)</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/delete/admins</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"Admin-code":"&nbsp;"</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>delete farm(post)</td>
+                <td><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/delete/farms</u></p></td>
+                <td>
+                    <table>
+                        <tbody><tr><td>{</td></tr>
+                        <tr><td>"Farm_name":"&nbsp;"</td></tr>
+                        <tr><td>}</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td>get all users (get)</td>
+                <td colspan="2"><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/get/users</u></p></td>
+            </tr>
+            <tr>
+                <td>get all admins (get)</td>
+                <td colspan="2"><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/get/admins</u></p></td>
+            </tr>
+            <tr>
+                <td>edit users (post)</td>
+                <td colspan="2"><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/get/edit/users</u></p></td>
+            </tr>
+            <tr>
+                <td>edit admis (post)</td>
+                <td colspan="2"><p style="color: blue;"><u>https://iotfishfarm.herokuapp.com/get/edit/admins</u></p></td>
+            </tr>
+        </tbody></table>
+        <br>
+        <table border="1">
+            <caption style="font-size: 15px;"><b>socket</b></caption>
+            <tbody><tr>
+                <th>Method</th>
+                <th>Code</th>
+            </tr>
+            <tr>
+                <td>Web socket link</td>
+                <td>var socket = io('ws://localhost:3001');</td>
+            </tr>
+        </tbody></table>
+        <table border="1">
+            <tbody><tr>
+                <th>Method</th>
+                <th>Code</th>
+            </tr>
+            <tr>
+                <td>web socket <!--(هنحط الحاجة دي في الانجلير علشان يستلم)--></td>
+                <td>
+                    <table>
+                        <tbody><tr><td> socket.emit('roomcode', User_code, Farm_name);// </td></tr>
+                        <tr><td>socket.on('data', (Farm_name, tempc, ph) =&gt; { });</td></tr>
+                        <tr><td>socket.on('image', image =&gt; {</td></tr>
+                        <tr><td>imageel = document.getElementById('image')</td></tr>
+                        <tr><td>imageel.src = image; });</td></tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+    
 
-    </body>
-
-    </html>
+    </body></html>
