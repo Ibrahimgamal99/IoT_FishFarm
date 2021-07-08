@@ -2,7 +2,7 @@ const router = require('express').Router()
 const bcrypt = require('bcrypt')
 const bodyParser = require('body-parser');
 const connection = require('../model/database')
-router.post("/admins", bodyParser.json(), function (req, res) {
+router.put("/admins", bodyParser.json(), function (req, res) {
     console.log(req.body)
     var admin = req.body.admin_code
     var name = req.body.Name
@@ -18,7 +18,7 @@ router.post("/admins", bodyParser.json(), function (req, res) {
     })
 
 });
-router.post("/users", bodyParser.json(), function (req, res) {
+router.put("/users", bodyParser.json(), function (req, res) {
     var user = req.body.User_code
     var name = req.body.Name
     var email = req.body.Email

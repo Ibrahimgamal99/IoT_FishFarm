@@ -17,7 +17,7 @@ router.post("/signupuser", bodyParser.json(), function (req, res) {
         connection.query("SELECT * FROM `user` WHERE `User_code`=?", user, function (err, result) {
             if (result.length > 0) {
                 console.log("user is exit");
-                res.status(202).json({
+                res.status(400).json({
                     error: "User is Exist"
                 })
                 if (err) throw err;
@@ -28,7 +28,7 @@ router.post("/signupuser", bodyParser.json(), function (req, res) {
                     if (err) throw err
                     console.log(user, "inserted");
                     res.status(200).json({
-                        record: "User inserted"
+                        record: user + " inserted"
                     })
                 })
             }
@@ -50,8 +50,8 @@ router.post("/signupadmin", bodyParser.json(), function (req, res) {
         connection.query("SELECT * FROM `admin` WHERE `admin_code`=?", admin, function (err, result) {
             if (result.length > 0) {
                 console.log("admin is exit");
-                res.status(202).json({
-                    error: "Admin is Exist"
+                res.status(400).json({
+                    error: admin + " is Exist"
                 })
                 if (err) throw err;
             }
@@ -62,7 +62,7 @@ router.post("/signupadmin", bodyParser.json(), function (req, res) {
                     if (err) throw err
                     console.log("1 record inserted");
                     res.status(200).json({
-                        record: "admin inserted"
+                        record: admin + " inserted"
                     })
                 })
             }
@@ -78,11 +78,11 @@ router.post("/newfarm", bodyParser.json(), function (req, res) {
     connection.query("SELECT * FROM `user` WHERE `User_code`=?", user, function (err, result) {
         if (result.length > 0) { // check if farm is exist 
             console.log("user is Exist");
-            connection.query("SELECT * FROM `Farm` WHERE `Farm_name`=?",fname, function (err, result) {
+            connection.query("SELECT * FROM `Farm` WHERE `Farm_name`=?", fname, function (err, result) {
                 if (result.length > 0) {
                     console.log("Farm name is Exist");
-                    res.status(202).json({
-                        error: "Farm name is Exist"
+                    res.status(400).json({
+                        error: fname + " is Exist"
                     })
                 }
                 else {
@@ -92,7 +92,7 @@ router.post("/newfarm", bodyParser.json(), function (req, res) {
                         if (err) throw err
                         console.log("Fram name inserted");
                         res.status(200).json({
-                            record: "Fram name inserted"
+                            record: fname + " inserted"
                         })
                     })
                 }
@@ -102,7 +102,7 @@ router.post("/newfarm", bodyParser.json(), function (req, res) {
             if (err) throw err;
         }
         else {
-            res.status(202).json({
+            res.status(500).json({
                 error: "User not Exist"
             })
         }

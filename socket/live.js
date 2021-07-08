@@ -1,5 +1,6 @@
 const connection = require('../model/database') // connect to db
 // open socket 
+var id;
 module.exports = (io) => {
     io.on('connection', (socket) => {
         socket.on('roomcode', (user_code, farmname) => {
@@ -18,18 +19,20 @@ module.exports = (io) => {
             })
         });
         // send user code & farmname & tempc & ph to raspby
-        socket.on('live', (User_code, farmname, tempc, ph) => {
+        socket.on('live', (User_code, farmname, tempc, ph) => {         // recieve from emit
             tempc = tempc.toFixed(2);
             ph = ph.toFixed(2)
             io.in(User_code + farmname).emit('data', ({ farmname, tempc, ph }))
-            console.log(User_code, farmname, tempc, ph)
-
+            //console.log(User_code, farmname, tempc, ph)
+            id = User_code
         });
         // send frame (camera steam) to raspby
         socket.on('camera', (User_code, farmname, image) => {
+            // imege = frame
             io.in(User_code + farmname).emit('image', image)
-
         });
-
+        socket.on('disconnect', function () {
+            console.log('A respbreey pi ' + id + ' disconnected');
+        });
     });
 }

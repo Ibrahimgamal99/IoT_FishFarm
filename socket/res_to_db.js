@@ -1,5 +1,5 @@
 const connection = require('../model/database')
-var id, i = 1;
+var i = 1;
 module.exports = (io) => {
     io.on('connection', (socket) => {
         // console.log('a respbreey pi connected (db)');
@@ -16,10 +16,6 @@ module.exports = (io) => {
                 i++;
             })
             console.log(User_code, farmname, tempc, ph)
-            id = User_code;
-        });
-        socket.on('disconnect', function () {
-            console.log('A respbreey pi ' + id + ' disconnected');
         });
     })
 }

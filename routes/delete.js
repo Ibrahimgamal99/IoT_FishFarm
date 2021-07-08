@@ -1,12 +1,10 @@
 const router = require('express').Router()
 const bodyParser = require('body-parser');
-const e = require('cors');
 const connection = require('../model/database')
-const { end } = require('../model/database');
 
-router.post("/admins", bodyParser.json(), function (req, res) {
-    console.log(req.body)
-    ac = req.body.admin_code;
+router.delete("/admins/:ac", bodyParser.json(), function (req, res) {
+    console.log(req.params)
+    ac = req.params.ac;
     connection.query("SELECT * FROM `admin` WHERE `admin_code`=?", ac, function (err, result) {
         if (result.length > 0) {
             var sql = "DELETE FROM `admin` WHERE `admin_code`=?"
@@ -20,7 +18,7 @@ router.post("/admins", bodyParser.json(), function (req, res) {
         }
         else {
             console.log("Admin not exit");
-            res.status(202).json({
+            res.status(400).json({
                 error: "Admin not Exist"
             })
             if (err) throw err;
@@ -28,10 +26,10 @@ router.post("/admins", bodyParser.json(), function (req, res) {
     })
 })
 
-router.post("/farms", bodyParser.json(), function (req, res) {
+router.delete("/farms/:Farm_name", bodyParser.json(), function (req, res) {
 
-    console.log(req.body)
-    farm_name = req.body.Farm_name;
+    console.log(req.params)
+    farm_name = req.params.Farm_name;
 
     connection.query("SELECT * FROM `Farm` WHERE `Farm_name`=?", farm_name, function (err, result) {
         if (result.length > 0) {
@@ -46,19 +44,19 @@ router.post("/farms", bodyParser.json(), function (req, res) {
         }
         else {
             console.log("Farm not exit");
-            res.status(202).json({
+            res.status(400).json({
                 error: "Farm not Exist"
             })
             if (err) throw err;
         }
     })
 
-    
-})
-router.post("/users", bodyParser.json(), function (req, res) {
 
-    console.log(req.body)
-    uc = req.body.User_code;
+})
+router.delete("/users/:User_code", bodyParser.json(), function (req, res) {
+
+    console.log(req.params)
+    uc = req.params.User_code;
 
     connection.query("SELECT * FROM `user` WHERE `User_code`=?", uc, function (err, result) {
         if (result.length > 0) {
@@ -73,7 +71,7 @@ router.post("/users", bodyParser.json(), function (req, res) {
         }
         else {
             console.log("User not exit");
-            res.status(202).json({
+            res.status(400).json({
                 error: "User not Exist"
             })
             if (err) throw err;
