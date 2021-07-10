@@ -23,6 +23,7 @@ router.get("/Allusers", bodyParser.json(), function (req, res) {
 
 router.get("/userhome/:name", bodyParser.json(), function (req, res) {
     var id = req.params.name
+    console.log(id)
     connection.query("SELECT * FROM `Fishbowl` where `Farm_name`='" + id + "' and `date` > now() - INTERVAL 7 day", id, function (err, result) {
         res.status(200).json({
             result: result
