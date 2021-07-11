@@ -23,8 +23,11 @@ router.post("/login", bodyParser.json(), function (req, res) {
                             result: {
                                 "usercode": result[0].User_code,
                                 "Name": result[0].Name,
-                                "Farm_num": farm,
-                                "save_time": result[0].save_time
+                                "Email": result[0].Email,
+                                "phone": result[0].phone,
+                                "address": result[0].address,                                
+                                "save_time": result[0].save_time,
+                                "Farm_num": farm
                             }
                         })
                     })
@@ -56,6 +59,8 @@ router.post("/login", bodyParser.json(), function (req, res) {
                     res.status(200).json({
                         result: {
                             "Admin_code": result[0].admin_code,
+                            "Email": result[0].Email,
+                            "phone": result[0].phone,
                             "Name": result[0].Name,
                         }
                     })
