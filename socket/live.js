@@ -12,7 +12,7 @@ module.exports = (io) => {
         socket.on('timer', (user_code, farmname, timer) => {
             console.log(user_code + farmname, timer)
             io.in(user_code + farmname).emit('timer', timer)
-            var sql = "UPDATE `user` SET `save_time`='" + timer + "' WHERE `User_code`='" + user_code + "';";
+            var sql = "UPDATE `Farm` SET `save_time`='" + timer + "' WHERE `User`='" + user_code + "' and `Farm_name`='" + farmname + "';";
             connection.query(sql, function (err, result) {
                 if (err) throw err
                 console.log("timer updated");

@@ -47,7 +47,6 @@ router.put("/users", bodyParser.json(), function (req, res) {
                         "Email": result[0].Email,
                         "phone": result[0].phone,
                         "address": result[0].address,
-                        "save_time": result[0].save_time,
                         "Farm_num": farm
                     }
                 })
