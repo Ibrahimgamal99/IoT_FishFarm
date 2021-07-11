@@ -23,7 +23,7 @@ router.post("/signupuser", bodyParser.json(), function (req, res) {
                 if (err) throw err;
             }
             else {// create new user 
-                var sql = "INSERT INTO `user`(`User_code`, `Name`, `password`, `Email`, `phone`, `address`, `save_time`) VALUES ('" + user + "','" + name + "','" + pw + "','" + email + "','" + phone + "','" + addr + "','" + 30 + "');"
+                var sql = "INSERT INTO `user`(`User_code`, `Name`, `password`, `Email`, `phone`, `address`) VALUES ('" + user + "','" + name + "','" + pw + "','" + email + "','" + phone + "','" + addr + "');"
                 connection.query(sql, function (err, result) {
                     if (err) throw err
                     console.log(user, "inserted");
@@ -87,7 +87,7 @@ router.post("/newfarm", bodyParser.json(), function (req, res) {
                 }
                 else {
                     // create new fish farm  
-                    var sql = "INSERT INTO `Farm` (`User`, `Farm_name`) VALUES ('" + user + "','" + fname + "');";
+                    var sql = "INSERT INTO `Farm` (`User`, `Farm_name`,`save_time`) VALUES ('" + user + "','" + fname + "','" + 30 + "');";
                     connection.query(sql, function (err, result) {
                         if (err) throw err
                         console.log("Fram name inserted");
