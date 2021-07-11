@@ -26,10 +26,10 @@ module.exports = (io) => {
             //console.log(User_code, farmname, tempc, ph)
             id = User_code
             if (tempc < 15) {
-                console.log(tempc)
+                console.log("low")
                 io.in(User_code + farmname).emit('heater', 1)
             } else {
-                console.log(tempc)
+                console.log("high")
                 io.in(User_code + farmname).emit('heater', 0)
             }
         });
