@@ -28,7 +28,7 @@ router.put("/admins", bodyParser.json(), function (req, res) {
 })
 
 router.put("/users", bodyParser.json(), function (req, res) {
-    var user = req.body.User_code
+    var user = req.body.usercode
     var name = req.body.Name
     var email = req.body.Email
     var phone = req.body.phone
