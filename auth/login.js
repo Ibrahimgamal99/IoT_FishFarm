@@ -2,8 +2,6 @@ const router = require('express').Router()
 const bcrypt = require('bcrypt')
 const bodyParser = require('body-parser');
 const connection = require('../model/database')
-const jwt = require('jsonwebtoken')
-const secret = "hemagamal"
 //login
 router.post("/login", bodyParser.json(), function (req, res) {
     console.log(req.body)
@@ -58,7 +56,7 @@ router.post("/login", bodyParser.json(), function (req, res) {
                     console.log("This is Admin")//المفروض يتحول علي الداش بورد
                     res.status(200).json({
                         result: {
-                            "Admin_code": result[0].admin_code,
+                            "admin_code": result[0].admin_code,
                             "Email": result[0].Email,
                             "phone": result[0].phone,
                             "Name": result[0].Name,
