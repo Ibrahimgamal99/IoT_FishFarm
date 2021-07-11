@@ -12,12 +12,21 @@ router.put("/admins", bodyParser.json(), function (req, res) {
     connection.query(sql, function (err, result) {
         if (err) throw err
         console.log("admin updated");
-        res.status(200).json({
-            record: "admin updated"
+        connection.query("SELECT * FROM `admin` WHERE admin_code=?", code, function (err, result) {
+            console.log("This is Admin")//المفروض يتحول علي الداش بورد
+            res.status(200).json({
+                result: {
+                    "admin_code": result[0].admin_code,
+                    "Email": result[0].Email,
+                    "phone": result[0].phone,
+                    "Name": result[0].Name,
+                }
+            })
         })
-    })
 
-});
+    });
+})
+
 router.put("/users", bodyParser.json(), function (req, res) {
     var user = req.body.User_code
     var name = req.body.Name
@@ -29,12 +38,19 @@ router.put("/users", bodyParser.json(), function (req, res) {
     connection.query(sql, function (err, result) {
         if (err) throw err
         console.log("user updated");
-        res.status(200).json({
-            record: "user updated"
+        connection.query("SELECT * FROM `user` WHERE User_code=?", code, function (err, result) {
+            res.status(200).json({
+                result: {
+                    "usercode": result[0].User_code,
+                    "Name": result[0].Name,
+                    "Email": result[0].Email,
+                    "phone": result[0].phone,
+                    "address": result[0].address,
+                    "save_time": result[0].save_time,
+                }
+            })
         })
     })
-
-});
-
+})
 
 module.exports = router;
