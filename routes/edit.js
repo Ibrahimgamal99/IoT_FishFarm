@@ -12,7 +12,7 @@ router.put("/admins", bodyParser.json(), function (req, res) {
     connection.query(sql, function (err, result) {
         if (err) throw err
         console.log("admin updated");
-        connection.query("SELECT * FROM `admin` WHERE admin_code=?", code, function (err, result) {
+        connection.query("SELECT * FROM `admin` WHERE admin_code=?", admin, function (err, result) {
             console.log("This is Admin")//المفروض يتحول علي الداش بورد
             res.status(200).json({
                 result: {
@@ -38,7 +38,7 @@ router.put("/users", bodyParser.json(), function (req, res) {
     connection.query(sql, function (err, result) {
         if (err) throw err
         console.log("user updated");
-        connection.query("SELECT * FROM `user` WHERE User_code=?", code, function (err, result) {
+        connection.query("SELECT * FROM `user` WHERE User_code=?", user, function (err, result) {
             res.status(200).json({
                 result: {
                     "usercode": result[0].User_code,
