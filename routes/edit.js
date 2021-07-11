@@ -39,17 +39,21 @@ router.put("/users", bodyParser.json(), function (req, res) {
         if (err) throw err
         console.log("user updated");
         connection.query("SELECT * FROM `user` WHERE User_code=?", user, function (err, result) {
-            res.status(200).json({
-                result: {
-                    "usercode": result[0].User_code,
-                    "Name": result[0].Name,
-                    "Email": result[0].Email,
-                    "phone": result[0].phone,
-                    "address": result[0].address,
-                    "save_time": result[0].save_time,
-                }
+            connection.query("SELECT * FROM `Farm` WHERE User=?", user, function (err, farm) {
+                res.status(200).json({
+                    result: {
+                        "usercode": result[0].User_code,
+                        "Name": result[0].Name,
+                        "Email": result[0].Email,
+                        "phone": result[0].phone,
+                        "address": result[0].address,
+                        "save_time": result[0].save_time,
+                        "Farm_num": farm
+                    }
+                })
             })
         })
+
     })
 })
 
