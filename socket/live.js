@@ -25,6 +25,11 @@ module.exports = (io) => {
             io.in(User_code + farmname).emit('data', ({ farmname, tempc, ph }))
             //console.log(User_code, farmname, tempc, ph)
             id = User_code
+            if (tempc < 15) {
+                io.in(User_code + farmname).emit('heater', 1)
+            } else {
+                io.in(User_code + farmname).emit('heater', 0)
+            }
         });
         // send frame (camera steam) to raspby
         socket.on('camera', (User_code, farmname, image) => {
